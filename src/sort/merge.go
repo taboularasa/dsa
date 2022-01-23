@@ -1,6 +1,6 @@
 package sort
 
-func MergeSort(nums []int) []int {
+func Merge(nums []int) []int {
 	mergeSortHelper(nums, 0, len(nums)-1)
 	return nums
 }

@@ -1,6 +1,6 @@
 package sort
 
-func InsertionSort(nums []int) []int {
+func Insertion(nums []int) []int {
 	for i := 0; i < len(nums); i++ {
 		temp := nums[i]
 		red := i - 1

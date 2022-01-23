@@ -7,7 +7,7 @@ import (
 	"github.com/taboularasa/dsa/src/partition"
 )
 
-func QuickSort(nums []int) {
+func Quick(nums []int) {
 	quickSortHelper(nums, 0, len(nums)-1)
 }
 
