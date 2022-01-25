@@ -6,19 +6,24 @@ func Merge(nums []int) []int {
 }
 
 func mergeSortHelper(nums []int, start, end int) {
-	// leaf worker
+	// base case
 	if start == end {
 		return
 	}
-	// internal node worker
+
+	// take the mid point for a pivot
 	mid := (start + end) / 2
 	i := start
 	j := mid + 1
+
+	// allocate a temporary array
 	aux := []int{}
 
+	// recurse the two halves
 	mergeSortHelper(nums, start, mid)
 	mergeSortHelper(nums, j, end)
 
+	// merge the two sorted halves
 	for i <= mid && j <= end {
 		if nums[i] <= nums[j] {
 			aux = append(aux, nums[i])
@@ -28,7 +33,8 @@ func mergeSortHelper(nums []int, start, end int) {
 			j++
 		}
 	}
-	// gather phase
+
+	// append leftovers
 	for i <= mid {
 		aux = append(aux, nums[i])
 		i++
@@ -39,6 +45,7 @@ func mergeSortHelper(nums []int, start, end int) {
 		j++
 	}
 
+	// copy sub array back into original
 	for k, l := start, 0; k <= end; k, l = k+1, l+1 {
 		nums[k] = aux[l]
 	}
