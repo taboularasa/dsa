@@ -11,7 +11,7 @@ func mergeSortHelper(nums []int, start, end int) {
 		return
 	}
 
-	// take the mid point for a pivot
+	// take the midpoint for a pivot
 	mid := (start + end) / 2
 	i := start
 	j := mid + 1
