@@ -16,11 +16,17 @@ func NewMap[K comparable, V any]() *Map[K, V] {
 	return &m
 }
 
-func (m *Map[K, V]) Write(i map[K]V) {
+func (m *Map[K, V]) Merge(i map[K]V) {
 	m.rwm.Lock()
 	for k, v := range i {
 		m.im[k] = v
 	}
+	m.rwm.Unlock()
+}
+
+func (m *Map[K, V]) Write(k K, v V) {
+	m.rwm.Lock()
+	m.im[k] = v
 	m.rwm.Unlock()
 }
 

@@ -15,7 +15,7 @@ func TestMap(t *testing.T) {
 	for i := 0; i < count; i++ {
 		val := i
 		go func() {
-			m.Write(map[string]int{strconv.Itoa(val): val})
+			m.Write(strconv.Itoa(val), val)
 			wg.Done()
 		}()
 	}
