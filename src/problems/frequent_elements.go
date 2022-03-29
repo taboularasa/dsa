@@ -1,6 +1,8 @@
 package problems
 
-import "container/heap"
+import (
+	"container/heap"
+)
 
 type IntCount struct {
 	val   int
