@@ -5,7 +5,7 @@ import (
 	"testing"
 )
 
-func TestKthLargest(t *testing.T) {
+func TestKthLargestStream(t *testing.T) {
 	tests := []struct {
 		k             int
 		initialStream []int
@@ -57,9 +57,35 @@ func TestKthLargest(t *testing.T) {
 	}
 
 	for _, tc := range tests {
-		got := KthLargest(tc.k, tc.initialStream, tc.appendStream)
+		got := KthLargestStream(tc.k, tc.initialStream, tc.appendStream)
 		if !reflect.DeepEqual(tc.want, got) {
 			t.Errorf("wanted %v, got %v", tc.want, got)
+		}
+	}
+}
+
+func TestKthLargestArray(t *testing.T) {
+	tests := []struct {
+		numbers []int
+		k       int
+		want    int
+	}{
+		{
+			numbers: []int{5, 1, 10, 3, 2},
+			k:       2,
+			want:    5,
+		},
+		{
+			numbers: []int{4, 1, 2, 2, 3},
+			k:       4,
+			want:    2,
+		},
+	}
+
+	for _, tc := range tests {
+		got := KthLargestArray(tc.numbers, tc.k)
+		if got != tc.want {
+			t.Errorf("wanted %d, got %d", tc.want, got)
 		}
 	}
 }

@@ -1,6 +1,9 @@
 package problems
 
-import "container/heap"
+import (
+	"container/heap"
+	"sort"
+)
 
 type IntHeap []int
 
@@ -18,7 +21,7 @@ func (h *IntHeap) Pop() any {
 	return x
 }
 
-func KthLargest(k int, initialStream, appendStream []int) []int {
+func KthLargestStream(k int, initialStream, appendStream []int) []int {
 	h := IntHeap(initialStream)
 	heap.Init(&h)
 
@@ -31,4 +34,10 @@ func KthLargest(k int, initialStream, appendStream []int) []int {
 		results = append(results, h[0])
 	}
 	return results
+}
+
+func KthLargestArray(numbers []int, k int) int {
+	sort.Slice(numbers, func(i, j int) bool { return numbers[i] < numbers[j] })
+
+	return numbers[len(numbers)-k]
 }
