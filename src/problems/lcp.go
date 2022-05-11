@@ -5,10 +5,11 @@ import (
 	"strings"
 )
 
-func LCM(input []string) []string {
+func LCP(input string) []string {
 	results := &[]string{}
 	partial := &[]string{}
-	helper(&input, partial, results, 0)
+	in := strings.Split(input, "")
+	helper(&in, partial, results, 0)
 	return *results
 }
 
